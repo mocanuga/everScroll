@@ -1,16 +1,16 @@
 (function (window, undefined) {
 	'use strict'; 
 	function extend(destination, source) {
-    	var property;
-        for (property in source) {
-            if (source[property] && source[property].constructor && source[property].constructor === Object) {
-                destination[property] = destination[property] || {};
-                extend(destination[property], source[property]);
-            } else {
+		var property;
+		for (property in source) {
+			if (source[property] && source[property].constructor && source[property].constructor === Object) {
+			destination[property] = destination[property] || {};
+			extend(destination[property], source[property]);
+			} else {
 				destination[property] = source[property];
 			}
-    	}
-    	return destination;
+		}
+	    	return destination;
 	}
 	var everScroll = function (options, callback) {
 		var opts = Utils.extend({
