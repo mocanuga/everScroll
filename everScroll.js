@@ -1,21 +1,21 @@
 (function (window, undefined) {
 	'use strict'; 
-    function extend(destination, source) {
-        var property;
+	function extend(destination, source) {
+    	var property;
         for (property in source) {
             if (source[property] && source[property].constructor && source[property].constructor === Object) {
                 destination[property] = destination[property] || {};
-                Utils.extend(destination[property], source[property]);
+                extend(destination[property], source[property]);
             } else {
-                destination[property] = source[property];
-            }
-        }
-        return destination;
-    }
+				destination[property] = source[property];
+			}
+    	}
+    	return destination;
+	}
 	var everScroll = function (options, callback) {
 		var opts = Utils.extend({
-			upScroll: Utils.noop,
-			downScroll: Utils.noop,
+			upScroll: null,
+			downScroll: null,
 			threshold: 100 // px to the edge (top or bottom)
 		}, options),
 		lastScroll = 0;
@@ -35,12 +35,12 @@
 			attached: false,
 			attach: function () {
 				if(this.attached)
-					Utils.Event.unbind(window, 'scroll', handler);
-				Utils.Event.bind(window, 'scroll', handler);
+					window.removeEventListener('scroll', handler);
+				window.addEventListener('scroll', handler);
 				this.attached = true;
 			}, 
 			dettach: function () {
-				Utils.Event.unbind(window, 'scroll', handler);
+				window.removeEventListener('scroll', handler);
 				this.attached = false; 
 			} 
 		}; 
