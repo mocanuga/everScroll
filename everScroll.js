@@ -4,8 +4,8 @@
 		var property;
 		for (property in source) {
 			if (source[property] && source[property].constructor && source[property].constructor === Object) {
-			destination[property] = destination[property] || {};
-			extend(destination[property], source[property]);
+    			destination[property] = destination[property] || {};
+    			extend(destination[property], source[property]);
 			} else {
 				destination[property] = source[property];
 			}
@@ -13,7 +13,7 @@
 	    	return destination;
 	}
 	var everScroll = function (options, callback) {
-		var opts = Utils.extend({
+		var opts = extend({
 			upScroll: null,
 			downScroll: null,
 			threshold: 100 // px to the edge (top or bottom)
