@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>everScroll Test page</title>
+	<style type="text/css">
+	html, body {height: 110%;}
+	</style>
+</head>
+<body>
+	<h1>everScroll</h1>
+	<p>Simple, lightweight infinite scrolling plugin</p>
+
+
+	<script src="everScroll.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	var scroll = new Scroll({
+		downScroll: function () {
+			console.log('downScroll', arguments);
+		},
+		upScroll: function () {
+			console.log('upScroll', arguments);
+		},
+		threshold: 10,
+		autoAttach: true
+	});
+	scroll.attach();
+	</script>
+</body>
+</html>
