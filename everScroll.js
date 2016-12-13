@@ -40,12 +40,12 @@
 		}
 		function attach() {
 			if(attached)
-				window.removeEventListener('scroll', handler);
+				window.removeEventListener('scroll', handler, false);
 			window.addEventListener('scroll', handler, false);
 			attached = true;
 		}
 		function dettach() {
-			window.removeEventListener('scroll', handler);
+			window.removeEventListener('scroll', handler, false);
 			attached = false; 
 		}
 		return {
